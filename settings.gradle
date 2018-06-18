@@ -1,2 +1,2 @@
-include ':app', ':loadinglayout', ':progresslibrary', ':RxTools-library'
+include ':app', ':loadinglayout', ':progresslibrary', ':RxTools-library', ':blelibrary'
 project(':RxTools-library').projectDir = new File('RxTools-master/RxTools-library')

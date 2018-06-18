@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RxTools-master/RxTools-library/RxTools-library.iml" filepath="$PROJECT_DIR$/RxTools-master/RxTools-library/RxTools-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blelibrary/blelibrary.iml" filepath="$PROJECT_DIR$/blelibrary/blelibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/loadinglayout/loadinglayout.iml" filepath="$PROJECT_DIR$/loadinglayout/loadinglayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/progresslibrary/progresslibrary.iml" filepath="$PROJECT_DIR$/progresslibrary/progresslibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/smarttrip.iml" filepath="$PROJECT_DIR$/smarttrip.iml" />

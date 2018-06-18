@@ -208,7 +208,7 @@ public class MainFragment extends Fragment {
     private static final String URL_MID = "&lat=";
     private static final String URL_END = "8&key=a5f0c24240604416869a05667fdda0e7";
     private String mUrl;
-    private static final String TODAY_GAS_PRICE = "http://api.jisuapi.com/oil/query?appkey=eade6fcaffe9929d&province=";
+    private static final String TODAY_GAS_PRICE = "http://api.jisuapi.com/oil/query?appkey=0904a03845733063&province=";
     private static final String BREAKRULE_LAT = "http://api.jisuapi.com/illegaladdr/coord?lat=";
     private static final String BREAKRULE_LNG = "&lng=";
     private static final String BREAKRULE_NUM = "&num=";
@@ -216,7 +216,7 @@ public class MainFragment extends Fragment {
     private static final String BREAKRULE_RANGE = "&range=";
     private String mRange = "5000";
     private static final String BREAKRULE_END = "&appkey=0904a03845733063";//违章高发地
-    private static final String AIR_QUALITY = "http://api.jisuapi.com/aqi/query?appkey=eade6fcaffe9929d&city=";
+    private static final String AIR_QUALITY = "http://api.jisuapi.com/aqi/query?appkey=0904a03845733063&city=";
     private static final String CARCONTROL_URL_HEAD = "http://api.jisuapi.com/news/search?keyword=";
     private static final String CARCONTROL_URL_END = "汽车&appkey=eade6fcaffe9929d";
     private static final String TRAFFIC_URL_HEAD = "http://api.jisuapi.com/news/search?keyword=";

@@ -169,7 +169,7 @@ public class AllGasFragment extends BaseFragment implements OnRefreshLoadMoreLis
                         .requestLocationShareUrl(new LocationShareURLOption()
                                 .location(new com.baidu.mapapi.model.LatLng(a, o))
                                 .name(name)
-                                .snippet("易行"));
+                                .snippet("Coffee"));
                 mShareDialog.dismiss();
             }
         });

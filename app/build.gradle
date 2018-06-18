@@ -70,7 +70,6 @@ dependencies {
     compile files('libs/Msc.jar')
     compile files('libs/AMap3DMap_6.0.1_AMapNavi_6.0.1_20180309.jar')
     //    implementation files('libs/unity-classes.jar')
-
     //    implementation(name: 'VuforiaWrapper', ext:'aar')
     repositories {
         mavenCentral()
@@ -86,8 +85,10 @@ dependencies {
     compile 'com.trycatch.android:mysnackbar:1.2.2'
     compile 'com.yalantis:ucrop:2.2.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
-
     compile project(':RxTools-library')
-
     compile 'com.android.support:multidex:1.0.3'
+    implementation project(':blelibrary')
+
+    implementation 'com.github.lecho:hellocharts-library:1.5.8@aar'
+    compile 'com.github.zzz40500:android-shapeLoadingView:1.0.3.2'
 }
