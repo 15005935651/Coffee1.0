@@ -14,26 +14,65 @@
         android:background="@color/colorGreen"
         app:navigationIcon="@drawable/ic_arrow_back_white"
         app:title="体检报告"
-        app:titleTextColor="@color/colorWrite" />
+        app:titleTextColor="@color/colorWrite"
+        android:gravity="center"/>
 
 
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
+
+        android:fillViewport="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <View
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
-                />
+                android:layout_height="12dp"
+                android:background="@android:color/white"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:background="@android:color/white">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/classmzzj" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="分数" />
+            </LinearLayout>
+
+
+
+            <com.qin.activity.consume.DashboardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="8dp"
+                android:background="@color/colorGray"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
@@ -89,7 +128,11 @@
             <com.qin.activity.consume.Sphygmomanometer
                 android:id="@+id/xueya"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" />
+                android:layout_height="200dp" >
+
+            </com.qin.activity.consume.Sphygmomanometer>
+
+
 
             <View
                 android:layout_width="match_parent"
@@ -134,11 +177,11 @@
             
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
                 android:background="@color/colorGreen"/>
 
         </LinearLayout>
 
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
