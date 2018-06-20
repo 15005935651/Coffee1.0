@@ -15,7 +15,17 @@
         app:navigationIcon="@drawable/ic_arrow_back_white"
         app:title="体检报告"
         app:titleTextColor="@color/colorWrite"
-        android:gravity="center"/>
+        android:gravity="center">
+
+    <ImageView
+        android:id="@+id/voice_report"
+        android:layout_gravity="end"
+        android:text="bold"
+        android:src="@drawable/svg_voice_report"
+        android:layout_marginEnd="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"/>
+    </android.support.v7.widget.Toolbar>
 
 
     <android.support.v4.widget.NestedScrollView

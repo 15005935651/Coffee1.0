@@ -47,6 +47,7 @@ public class DrinkDriveActivity extends AppCompatActivity {
             isAll=true;
         }else{
             drinkRadar.showScore(98f);
+            drinkDriveStart.setText("点击开始");
             isAll=false;
         }
     }

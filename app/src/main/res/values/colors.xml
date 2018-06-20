@@ -3,7 +3,7 @@
     <color name="colorPrimary">#2c2d41</color>
     <color name="colorPrimaryDark">#2c2d41</color>
     <color name="colorAccent">#2c2d41</color>
-
+    <color name="my_blue">#01b0f1</color>
     <color name="toast_bg">#dddfe0</color>
     <!--主题颜色-->
     <color name="colorTheme">#2c2d41</color>

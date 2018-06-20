@@ -18,7 +18,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp">
+        android:layout_height="260dp"
+        android:background="@color/colorGreen">
 
 
         <com.qin.activity.consume.RadarView
@@ -31,7 +32,10 @@
     </FrameLayout>
 
 
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gary" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -66,13 +70,16 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:text="未连接蓝牙"
-                    android:textColor="@color/colorGreen"/>
+                    android:textColor="@color/my_blue"/>
 
 
             </LinearLayout>
 
 
-
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gary" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,7 +102,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:text="0 mv"
-                    android:textColor="@color/colorGreen"/>
+                    android:textColor="@color/my_blue"/>
 
 
             </LinearLayout>
@@ -119,15 +126,20 @@
             android:textColor="@color/deepgray"
             android:textSize="15sp"/>
 
-        <Button
+        <com.qin.view.button.CircularProgressButton
             android:id="@+id/drink_drive_start"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="#01b0f1"
-            android:text="点击连接"
-            android:textColor="@color/white"/>
+            android:layout_height="50dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/cpb_white"
+            android:textSize="18sp"
+            app:cpb_colorIndicatorBackground="@color/red"
+            app:cpb_cornerRadius="48dp"
+            app:cpb_textComplete="连接成功"
+            app:cpb_textError="为检测到蓝牙"
+            app:cpb_textIdle="点击连接" />
 
     </LinearLayout>
 

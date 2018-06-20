@@ -72,7 +72,6 @@ public class DashboardView extends View {
         mPaint.setAntiAlias(true);
         mPaint.setStrokeCap(Paint.Cap.SQUARE);
         mPaint.setColor(Color.RED);
-
         mRectFProgressArc = new RectF();
         mRectText = new Rect();
         mPath = new Path();

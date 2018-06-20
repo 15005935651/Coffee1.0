@@ -72,20 +72,20 @@ public class RadarView extends View {
     /**
      * 雷达扫描圆环的颜色
      */
-    private int mCircleColor = Color.parseColor("#C62F2F");
+    private int mCircleColor = Color.WHITE;
     /**
      * 对角线的颜色
      */
-    private int mLineColor = Color.parseColor("#C62F2F");
+    private int mLineColor = Color.WHITE;
 
     /**
      * 分数界面外边框的颜色
      */
-    private int mSideColor = Color.parseColor("#01b0f1");
+    private int mSideColor =  Color.WHITE;
     /**
      * 分数界面外圆环的颜色
      */
-    private int mOutsideBackgroundColor = Color.parseColor("#01b0f1");
+    private int mOutsideBackgroundColor = Color.parseColor("#75C095");
     /**
      * 分数界面内圆环的颜色
      */
