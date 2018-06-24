@@ -94,11 +94,12 @@ public class RadarView extends View {
     /**
      * 分数文本颜色
      */
-    private int mTextColor = Color.parseColor("#01b0f1");
+    private int mTextColor = Color.parseColor("#75C095");
+    //private int mTextColor = Color.parseColor("#01b0f1");
     /**
      * 分数标签文本颜色
      */
-    private int mLabelTextColor = Color.parseColor("#01b0f1");
+    private int mLabelTextColor = Color.parseColor("#75C095");
 
     /**
      * 显示分数文本的字体大小

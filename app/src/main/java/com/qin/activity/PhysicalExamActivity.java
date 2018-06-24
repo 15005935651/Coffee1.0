@@ -1,173 +1,190 @@
 package com.qin.activity;
 
-import android.app.Dialog;
-import android.bluetooth.BluetoothDevice;
-import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 
 import com.coffee.blelibrary.BleController;
 import com.coffee.blelibrary.callback.ConnectCallback;
-import com.coffee.blelibrary.callback.ScanCallback;
-import com.mingle.widget.LoadingView;
+import com.coffee.blelibrary.callback.OnWriteCallback;
 import com.qin.R;
-import com.qin.adapter.ble.DeviceListAdapter;
-import com.qin.util.ScreenUtils;
-import com.qin.util.ToastUtils;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.qin.view.button.CircularProgressButton;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.lang.ref.WeakReference;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
-public class PhysicalExamActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class PhysicalExamActivity extends AppCompatActivity {
 
     @BindView(R.id.physical_toolbar)
     Toolbar physicalToolbar;
-    @BindView(R.id.mDeviceList)
-    ListView mDeviceList;
-    @BindView(R.id.phy_exam_refreshLayout)
-    SmartRefreshLayout phyExamRefreshLayout;
-    @BindView(R.id.loadView)
-    LoadingView loadView;
-
+    @BindView(R.id.phy_exam_bluetooth_connect)
+    CircularProgressButton phyExamBluetoothConnect;
+    @BindView(R.id.imgInsideCircle)
+    ImageView imgInsideCircle;
+    @BindView(R.id.imgOuterCircle)
+    ImageView imgOuterCircle;
+    @BindView(R.id.bluetooth)
+    ImageView bluetooth;
     private BleController mBleController;
-    private List<BluetoothDevice> bluetoothDevices = new ArrayList<BluetoothDevice>();
 
+    private  boolean isPhy_Examed = false;
 
-    private Dialog mDialog;
+    private Animation m_animInsideCircle; //内圆动画
+    private Animation m_animOuterCircle;  //外圆动画
+
+    class MyHandler extends Handler {
+        WeakReference<PhysicalExamActivity> mActivity;
+
+        MyHandler(PhysicalExamActivity activity) {
+            mActivity = new WeakReference<PhysicalExamActivity>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            PhysicalExamActivity theActivity = mActivity.get();
+            switch (msg.what) {
+                case 0:
+                    stopAnimation();
+                    bluetooth.setImageResource(R.drawable.finish);
+                    phyExamBluetoothConnect.setProgress(0);
+                    phyExamBluetoothConnect.setText("体检完成，查看体检报告");
+                    isPhy_Examed = true;
+                    break;
+            }
+        }
+    }
+
+    MyHandler ttsHandler = new MyHandler(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setStatusBarColor(Color.BLACK);
         setContentView(R.layout.activity_physical_exam);
         ButterKnife.bind(this);
 
         physicalToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isPhy_Examed=false;
                 PhysicalExamActivity.this.finish();
             }
         });
-
-        mDeviceList = (ListView) findViewById(R.id.mDeviceList);
-
         // TODO  第一步：初始化
         mBleController = BleController.getInstance().init(this);
-        loadView.setVisibility(View.GONE);
-        initDialog();
-        mDialog.show();
 
-        // TODO  第二步：搜索设备，获取列表后进行展示
-        scanDevices();
+        phyExamBluetoothConnect.setIndeterminateProgressMode(true);
 
-        phyExamRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
-            @Override
-            public void onRefresh(RefreshLayout refreshLayout) {
-                scanDevices();
-            }
-        });
-        phyExamRefreshLayout.setPrimaryColorsId(R.color.colorGreen, android.R.color.white);
+
     }
 
 
-    /*搜寻蓝牙设备**/
-    private void scanDevices() {
-        mBleController.scanBle(0, new ScanCallback() {
-            @Override
-            public void onSuccess() {
-                mDialog.dismiss();
-                if (bluetoothDevices.size() > 0) {
-                    mDeviceList.setAdapter(new DeviceListAdapter(getApplication(), bluetoothDevices));
-                    mDialog.dismiss();
-                    phyExamRefreshLayout.finishRefresh();
-                    mDeviceList.setOnItemClickListener(PhysicalExamActivity.this);
-                } else {
-                    ToastUtils.showBgResource(getApplication(), "未搜索到Ble设备");
+    private void rotateAnimInit() {
+        imgInsideCircle.setVisibility(View.VISIBLE);
+        imgOuterCircle.setVisibility(View.VISIBLE);
+
+        m_animInsideCircle = AnimationUtils.loadAnimation(this, R.anim.inside_rotate_anim);
+        m_animInsideCircle.setInterpolator(new LinearInterpolator()); //匀速动画
+
+        m_animOuterCircle = AnimationUtils.loadAnimation(this, R.anim.outer_rotate_anim);
+        m_animOuterCircle.setInterpolator(new LinearInterpolator()); //匀速动画
+
+        //开始动画
+        startAnimation();
+    }
+
+    //开始动画
+    private void startAnimation() {
+
+        imgInsideCircle.startAnimation(m_animInsideCircle);
+        imgOuterCircle.startAnimation(m_animOuterCircle);
+
+    }
+
+    private void stopAnimation() {
+        imgInsideCircle.setVisibility(View.INVISIBLE);
+        imgOuterCircle.setVisibility(View.INVISIBLE);
+        imgInsideCircle.clearAnimation();
+        imgOuterCircle.clearAnimation();
+    }
+
+    @OnClick(R.id.phy_exam_bluetooth_connect)
+    public void onViewClicked() {
+
+
+        if (!isPhy_Examed) {
+            rotateAnimInit();
+            mBleController.connect(0, "54:6C:0E:B8:2E:01", new ConnectCallback() {
+                @Override
+                public void onConnSuccess() {
+                    phyExamBluetoothConnect.setProgress(0);
+                    phyExamBluetoothConnect.setText("连接成功，正在为您体检...");
+//                loadView.setVisibility(View.VISIBLE);
+                    new Thread() {
+                        String[] s = {"Coffee", "Start physical exam", "Cheek heart-jump", "Cheek blood-pressure", "Cheek temperature", "Cheek finish"};
+
+                        public void run() {
+                            try {
+                                for (int i = 0; i < s.length; i++) {
+                                    Thread.currentThread().sleep(2000);
+                                    mBleController.writeBuffer(s[i].getBytes(), new OnWriteCallback() {
+                                        @Override
+                                        public void onSuccess() {
+                                        }
+
+                                        @Override
+                                        public void onFailed(int state) {
+
+                                        }
+                                    });
+                                }
+                                ttsHandler.sendEmptyMessage(0);
+                                Message msg = new Message();
+                                msg.obj = "数据";//可以是基本类型，可以是对象，可以是List、map等；
+                                ttsHandler.sendMessage(msg);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }.start();
+                    //  Toast.makeText(MainActivity.this, "连接成功", Toast.LENGTH_SHORT).show();
+                    //  startActivity(new Intent(MainActivity.this,SendAndReciveActivity.class));
                 }
-            }
 
-            @Override
-            public void onScanning(BluetoothDevice device, int rssi, byte[] scanRecord) {
-                if (!bluetoothDevices.contains(device)) {
-                    bluetoothDevices.add(device);
+                @Override
+                public void onConnFailed() {
+                    //ToastUtils.showBgResource(getBaseContext(), "连接超时请重试");
+                    stopAnimation();
+                    phyExamBluetoothConnect.setProgress(-1);
                 }
-            }
-        });
+            });
+        } else {
+            Intent intent = new Intent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.setClass(getApplication(), PhysicalReportActivity.class);
+            startActivity(intent);
+        }
+
     }
-
-
-    private void initDialog() {
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ScreenUtils.getWindowWidth(PhysicalExamActivity.this), ScreenUtils.getWindowHeight(PhysicalExamActivity.this));
-        params.width = (int) (PhysicalExamActivity.this.getWindowManager().getDefaultDisplay().getWidth() * 0.5f);
-        params.height = (int) (PhysicalExamActivity.this.getWindowManager().getDefaultDisplay().getWidth() * 0.5f);
-        mDialog = new Dialog(PhysicalExamActivity.this);
-        View view = View.inflate(PhysicalExamActivity.this, R.layout.dialog_loading, null);
-        mDialog.setContentView(view);
-        mDialog.setContentView(view, params);
-        mDialog.setCanceledOnTouchOutside(false);
-        mDialog.setCancelable(true);
-
-        mDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-            @Override
-            public void onDismiss(DialogInterface dialog) {
-
-            }
-        });
-    }
-
 
     @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, final long l) {
-        mDialog.show();
-        // TODO 第三步：点击条目后,获取地址，根据地址连接设备
-        String address = bluetoothDevices.get(i).getAddress();
-        mBleController.connect(0, address, new ConnectCallback() {
-            @Override
-            public void onConnSuccess() {
-                mDialog.dismiss();
-                mDeviceList.setVisibility(View.GONE);
-                loadView.setLoadingText("连接成功，正在为您体检...");
-                loadView.setVisibility(View.VISIBLE);
-//                String [] s={"hello","go start","turn right","turn left","care for","speed 3m/s"};
-//                try{
-//                    for(int i=0;i<s.length;i++){
-//                        Thread.currentThread().sleep(2000);
-//                        mBleController.writeBuffer(s[i].getBytes(), new OnWriteCallback() {
-//                            @Override
-//                            public void onSuccess() {
-//
-//                            }
-//
-//                            @Override
-//                            public void onFailed(int state) {
-//
-//                            }
-//                        });
-//                    }
-//                }catch (InterruptedException e){
-//                    e.printStackTrace();
-//                }
-                //  Toast.makeText(MainActivity.this, "连接成功", Toast.LENGTH_SHORT).show();
-                //  startActivity(new Intent(MainActivity.this,SendAndReciveActivity.class));
-            }
-
-            @Override
-            public void onConnFailed() {
-                mDialog.dismiss();
-                ToastUtils.showBgResource(getBaseContext(), "连接超时请重试");
-            }
-        });
+    protected void onDestroy() {
+        super.onDestroy();
+        isPhy_Examed=false;
+        mBleController.closeBleConn();
     }
-
 }
