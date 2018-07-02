@@ -58,7 +58,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by Administrator on 2018/3/27 0027.
+ * Created by Administrator on 2018/5/6.
  */
 
 public class MainActivity extends AppCompatActivity implements WeatherSearch.OnWeatherSearchListener {
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
         IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(mNetworkChangedReceiver, intentFilter);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Coffee");
+        getSupportActionBar().setTitle("驾驶宝");
         //    mUser_id = getIntent().getExtras().getString("user_id");
         if (savedInstanceState == null) {
             MainFragment homeFragment = MainFragment.newInstance("活儿");
@@ -130,6 +130,8 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
         initLocation();
         startLocation();
         initSlidingMenu(savedInstanceState);
+
+
     }
 
 

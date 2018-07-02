@@ -45,9 +45,6 @@ import butterknife.Unbinder;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * Created by Administrator on 2018/3/30 0030.
- */
 
 public class MyCarFragment extends BaseFragment {
     @BindView(R.id.tv_mycar_alter)

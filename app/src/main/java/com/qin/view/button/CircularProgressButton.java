@@ -11,13 +11,13 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.v7.widget.AppCompatButton;
 import android.util.AttributeSet;
 import android.util.StateSet;
-import android.widget.Button;
 
 import com.qin.R;
 
-public class CircularProgressButton extends Button {
+public class CircularProgressButton extends AppCompatButton {
 
     public static final int IDLE_STATE_PROGRESS = 0;
     public static final int ERROR_STATE_PROGRESS = -1;

@@ -37,15 +37,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Administrator on 2018/3/26 0026.
+ * Created by Administrator on 2018/5/6.
  */
-
 public class CarSplashActivity extends AppCompatActivity {
     @BindView(R.id.tv_splash)
     TextView tvSplash;
     private int n = 0;
     private int titleLength = 0;
-    private String title = "您的车载好帮手";
+    private String title = "驾驶宝,智慧您的出行";
     private static final String tag = "CarSplashActivity";
     /**
      * UPDATE_VERSION 更新版本的code

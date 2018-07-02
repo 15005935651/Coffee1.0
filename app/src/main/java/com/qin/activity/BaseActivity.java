@@ -9,9 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import com.qin.recevier.NetworkChangedReceiver;
 
 /**
- * Created by Administrator on 2018/3/31 0031.
+ * Created by Administrator on 2018/5/6.
  */
-
 public class BaseActivity extends AppCompatActivity {
 
     private NetworkChangedReceiver mNetworkChangedReceiver;

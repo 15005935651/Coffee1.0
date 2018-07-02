@@ -23,9 +23,7 @@ import com.qin.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Administrator on 2018/4/6 0006.
- */
+
 
 public class WebViewActivity extends AppCompatActivity {
     @BindView(R.id.web_pb)

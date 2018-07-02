@@ -32,9 +32,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/4/7 0007.
- */
 
 public class VINAnalysisFragment extends BaseFragment {
 

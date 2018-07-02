@@ -26,9 +26,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/3/30 0030.
- */
+
 
 public class UseGuideFragment extends BaseFragment {
     @BindView(R.id.tv_main_location)

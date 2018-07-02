@@ -22,9 +22,6 @@ import com.qin.fragment.main.owner.VINAnalysisFragment;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Administrator on 2018/4/7 0007.
- */
 
 public class OwnerServiceActivity extends AppCompatActivity {
     @BindView(R.id.fl_owner)

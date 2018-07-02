@@ -60,9 +60,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by Administrator on 2018/4/6 0006.
- */
+
 
 public class ParkingActivity extends AppCompatActivity implements View.OnClickListener, OnRefreshLoadMoreListener, INaviInfoCallback {
     @BindView(R.id.toolbar)

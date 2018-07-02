@@ -26,9 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by Administrator on 2018/4/5 0005.
- */
 
 public class ParkingSeatActivity extends AppCompatActivity implements INaviInfoCallback {
     @BindView(R.id.toolbar)

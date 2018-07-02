@@ -281,7 +281,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="20dp"
-                    android:text="terms of service\nThe right to use the software is owned by QinDaLiang\@1325716331@qq.com"
+                    android:text="terms of service\nThe right to use the software is owned by 福州大学Coffee团队"
                     android:textColor="@color/colorGrays"
                     android:textSize="10sp" />
             </LinearLayout>

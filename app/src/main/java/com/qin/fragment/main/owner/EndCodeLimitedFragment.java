@@ -47,10 +47,6 @@ import butterknife.Unbinder;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-/**
- * Created by Administrator on 2018/4/7 0007.
- */
-
 public class EndCodeLimitedFragment extends BaseFragment {
 
     private static final String URL_CITY = "http://api.jisuapi.com/vehiclelimit/city?appkey=eade6fcaffe9929d";

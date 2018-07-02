@@ -62,9 +62,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by Administrator on 2018/4/6 0006.
- */
 
 public class VehicleOfficeActivity extends AppCompatActivity implements
         View.OnClickListener,

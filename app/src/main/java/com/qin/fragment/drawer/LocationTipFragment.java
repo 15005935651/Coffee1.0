@@ -10,9 +10,6 @@ import android.view.ViewGroup;
 import com.qin.R;
 import com.qin.fragment.BaseFragment;
 
-/**
- * Created by Administrator on 2018/3/30 0030.
- */
 
 public class LocationTipFragment extends BaseFragment {
     @Override

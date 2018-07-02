@@ -17,9 +17,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/3/30 0030.
- */
 
 public class ProxyFragment extends BaseFragment {
     @BindView(R.id.toolbar)

@@ -22,9 +22,6 @@ import java.util.logging.Level;
 
 import okhttp3.OkHttpClient;
 
-/**
- * Created by Administrator on 2018/3/15 0015.
- */
 
 public class MyApplication extends Application {
 

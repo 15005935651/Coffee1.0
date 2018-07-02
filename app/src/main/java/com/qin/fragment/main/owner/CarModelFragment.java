@@ -22,7 +22,6 @@ import com.qin.adapter.recyclerview.allcar.AllCarModelRecyclerViewAdapter;
 import com.qin.fragment.BaseFragment;
 import com.qin.pojo.allcartype.carmodel.CarModel;
 import com.qin.pojo.allcartype.carmodel.Lists;
-import com.qin.pojo.allcartype.carmodel.Result;
 import com.qin.util.ScreenUtils;
 import com.qin.util.ToastUtils;
 
@@ -33,9 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/4/18 0018.
- */
 
 public class CarModelFragment extends BaseFragment {
 

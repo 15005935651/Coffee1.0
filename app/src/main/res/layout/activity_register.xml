@@ -407,6 +407,54 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:layout_marginRight="8dp"
+                            android:src="@mipmap/register_insurancetel" />
+
+                        <EditText
+                            android:id="@+id/et_register_insurancetel"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请输入家人安全电话"
+                            android:inputType="phone"
+                            android:maxLength="30"
+                            android:singleLine="true"
+                            android:textColor="#999999"
+                            android:textColorHint="#999999"
+                            android:textSize="14dp" />
+
+                        <ImageView
+                            android:id="@+id/iv_register_clean_insurancetel"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:scaleType="centerInside"
+                            android:src="@mipmap/delete_login"
+                            android:visibility="gone" />
+
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="3dp"
+                            android:text="（可选）"
+                            android:textColor="#999"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
                             android:layout_marginRight="10dp"
                             android:src="@mipmap/register_chepai" />
 
@@ -592,50 +640,6 @@
                         android:layout_marginTop="5dp"
                         android:background="#bbbbbb" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingLeft="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="3dp"
-                            android:text="（可选）"
-                            android:textColor="#999"
-                            android:textSize="12sp" />
-
-                        <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_marginRight="8dp"
-                            android:src="@mipmap/register_insurancetel" />
-
-                        <EditText
-                            android:id="@+id/et_register_insurancetel"
-                            android:layout_width="0dp"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@null"
-                            android:hint="请输入保险公司电话"
-                            android:inputType="phone"
-                            android:maxLength="30"
-                            android:singleLine="true"
-                            android:textColor="#999999"
-                            android:textColorHint="#999999"
-                            android:textSize="14dp" />
-
-                        <ImageView
-                            android:id="@+id/iv_register_clean_insurancetel"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:scaleType="centerInside"
-                            android:src="@mipmap/delete_login"
-                            android:visibility="gone" />
-
-                    </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -873,7 +877,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="terms of service\nThe right to use the software is owned by\nQinDaLiang@1325716331@qq.com"
+                            android:text="terms of service\nThe right to use the software is owned by\n福州大学Coffee团队"
                             android:textColor="#666"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -948,7 +952,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="terms of service\nThe right to use the software is owned by\nQinDaLiang@1325716331@qq.com"
+                            android:text="terms of service\nThe right to use the software is owned by\n福州大学Coffee团队"
                             android:textColor="#666"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -1038,7 +1042,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="terms of service\nThe right to use the software is owned by\nQinDaLiang@1325716331@qq.com"
+                            android:text="terms of service\nThe right to use the software is owned by\n福州大学Coffee团队"
                             android:textColor="#666"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -1104,7 +1108,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="terms of service\nThe right to use the software is owned by\nQinDaLiang@1325716331@qq.com"
+                            android:text="terms of service\nThe right to use the software is owned by\n福州大学Coffee团队"
                             android:textColor="#666"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -1170,7 +1174,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:padding="20dp"
-                            android:text="terms of service\nThe right to use the software is owned by\nQinDaLiang@1325716331@qq.com"
+                            android:text="terms of service\nThe right to use the software is owned by\n福州大学Coffee团队"
                             android:textColor="#666"
                             android:textSize="12sp" />
                     </LinearLayout>

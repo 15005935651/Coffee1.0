@@ -27,9 +27,6 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Administrator on 2018/4/26.
- */
 
 public class BreakRuleMapActivity extends AppCompatActivity {
     @BindView(R.id.toolbar)

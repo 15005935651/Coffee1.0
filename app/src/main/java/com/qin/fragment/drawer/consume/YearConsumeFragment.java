@@ -33,9 +33,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/5/5.
- */
 
 public class YearConsumeFragment extends BaseFragment {
 

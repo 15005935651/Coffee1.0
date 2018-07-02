@@ -51,9 +51,7 @@ import butterknife.Unbinder;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-/**
- * Created by Administrator on 2018/4/7 0007.
- */
+
 
 public class BreakRuleHappenFragment extends BaseFragment implements OnRefreshLoadMoreListener, View.OnClickListener {
 
@@ -80,7 +78,7 @@ public class BreakRuleHappenFragment extends BaseFragment implements OnRefreshLo
     private String mNum = "20";
     private static final String BREAKRULE_RANGE = "&range=";
     private String mRange = "5000";
-    private static final String BREAKRULE_END = "&appkey=eade6fcaffe9929d";
+    private static final String BREAKRULE_END = "&appkey=0904a03845733063";
     private List<Result> mResult;
     private double mLatitude;
     private double mLongitude;

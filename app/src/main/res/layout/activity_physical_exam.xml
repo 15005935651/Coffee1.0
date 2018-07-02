@@ -5,62 +5,79 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/lybg"
     tools:context=".activity.PhysicalExamActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/physical_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorGreen"
         app:navigationIcon="@drawable/ic_arrow_back_white"
         app:title="基础体检"
-        app:titleTextColor="@color/colorWrite" />
+        app:titleTextColor="@color/colorWrite">
+
+
+    </android.support.v7.widget.Toolbar>
 
 
 
-        <com.scwang.smartrefresh.layout.SmartRefreshLayout
-            android:id="@+id/phy_exam_refreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srlClassicsSpinnerStyle="FixedBehind"
-                app:srlDrawableArrowSize="20dp"
-                app:srlDrawableMarginRight="20dp"
-                app:srlDrawableProgress="@drawable/main_refreshed_icon"
-                app:srlDrawableProgressSize="20dp"
-                app:srlEnableLastTime="true"
-                app:srlFinishDuration="500"
-                app:srlPrimaryColor="@color/colorGreen"
-                app:srlTextSizeTime="10dp"
-                app:srlTextSizeTitle="16sp"
-                app:srlTextTimeMarginTop="2dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <ListView
-                    android:layout_gravity="center"
-                    android:id="@+id/mDeviceList"
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:divider="#00000000"
-                    android:dividerHeight="12dp" />
+                    android:layout_height="150dp"
+                    android:layout_marginTop="14dp"
+                    >
 
-                <com.mingle.widget.LoadingView
-                    android:id="@+id/loadView"
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/imgInsideCircle"
+                        android:src="@drawable/loading0"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_gravity="center"/>
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/bluetooth"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:src="@drawable/ly"
+                        android:layout_gravity="center"/>
+
+
+                    <ImageView
+                        android:visibility="invisible"
+                        android:id="@+id/imgOuterCircle"
+                        android:src="@drawable/loading1"
+                        android:layout_width="140dp"
+                        android:layout_height="140dp"
+                        android:layout_gravity="center"/>
+
+                </FrameLayout>
+
+
+                <com.qin.view.button.CircularProgressButton
+                    android:id="@+id/phy_exam_bluetooth_connect"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    />
+                    android:layout_height="45dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginTop="300dp"
+                    android:textColor="@color/cpb_white"
+                    android:textSize="18sp"
+                    app:cpb_colorIndicatorBackground="@color/red"
+                    app:cpb_cornerRadius="48dp"
+                    app:cpb_textComplete="连接成功"
+                    app:cpb_textError="未检测到蓝牙"
+                    app:cpb_textIdle="点击连接" />
 
-            </FrameLayout>
 
-        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+            </LinearLayout>
+
 
 </android.support.v7.widget.LinearLayoutCompat>

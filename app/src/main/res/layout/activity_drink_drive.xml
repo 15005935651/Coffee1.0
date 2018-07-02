@@ -70,7 +70,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:text="未连接蓝牙"
-                    android:textColor="@color/my_blue"/>
+                    android:textColor="@color/colorGreen"/>
 
 
             </LinearLayout>
@@ -102,7 +102,7 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="15dp"
                     android:text="0 mv"
-                    android:textColor="@color/my_blue"/>
+                    android:textColor="@color/colorGreen"/>
 
 
             </LinearLayout>

@@ -1,8 +1,5 @@
 package com.qin.dao;
 
-/**
- * Created by Administrator on 2018/3/28 0028.
- */
 
 public class LoginUsers {
 

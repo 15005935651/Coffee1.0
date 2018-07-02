@@ -7,9 +7,6 @@ import android.content.Intent;
 import com.qin.util.NetworkUtil;
 import com.qin.util.ToastUtils;
 
-/**
- * Created by Administrator on 2018/3/31 0031.
- */
 
 public class NetworkChangedReceiver extends BroadcastReceiver {
 

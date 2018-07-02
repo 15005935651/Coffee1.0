@@ -4,9 +4,6 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-/**
- * Created by Administrator on 2018/3/31 0031.
- */
 
 public class NetworkUtil {
     public static final int TYPE_NONE = -1;

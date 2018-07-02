@@ -1,6 +1,7 @@
 package com.qin.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.axin.coffee.baiduvoice.AvoidQuickClick;
 import com.axin.coffee.baiduvoice.Speek;
@@ -48,9 +50,30 @@ public class PhysicalReportActivity extends AppCompatActivity {
     BubbleChartView bubbleChartView;
     @BindView(R.id.voice_report)
     ImageView voiceReport;
+    @BindView(R.id.heartTextView)
+    TextView heartTextView;
+    @BindView(R.id.bloodTextView)
+    TextView bloodTextView;
+    @BindView(R.id.bloodOxTextView)
+    TextView bloodOxTextView;
 
 
     private LineChartData data;
+
+
+    //分数先赋初值
+    private String bp_high_soc="0.03";
+    private String bp_low_soc="0.04";
+    private String heart_soc="0.11";
+    private String bo_soc="0.07";
+
+    String health_sco="782";
+    String heartjump_sco="70";
+    String bph_sco="110";
+    String bpl_sco="80";
+    String ox_sco="九十五";
+    String temp="37.2";
+    String degree="良好";
 
     //语音播报
     private Speek speek;
@@ -58,7 +81,7 @@ public class PhysicalReportActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_physical_report);
         ButterKnife.bind(this);
         physicalReportToolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -71,15 +94,21 @@ public class PhysicalReportActivity extends AppCompatActivity {
 
         //初始化语音播报
         initPermission();
-        speek=new Speek(this);
+        speek = new Speek(this);
 
         //加载心跳图表
         tmpoChart = (LineChartView) findViewById(R.id.tmpo_chart);
         generateTempoData();
 
-        //加载血糖图表
+        //加载血氧图表
         bubbleChartView = (BubbleChartView) findViewById(R.id.bubble_chart_view);
         generateData();
+
+        //获取体检报告的异常指数
+        InitReportSco();
+
+        xueya.setTargetTemperature(110.0f);
+
     }
 
 
@@ -270,10 +299,26 @@ public class PhysicalReportActivity extends AppCompatActivity {
     public void onViewClicked() {
         //避免连接点击造成多次播放
         if (AvoidQuickClick.isFastClick()) {
-            speek.Speeking("您的体检分数为98分，身体状况良好"+
-                    "其中心率80跳每分钟，血压120千帕，血糖70每毫升，本次体检时间为下午两点，祝您生活愉快");
+            speek.Speeking("您的体检分数为"+health_sco+"分，身体状况"+degree +
+                    "其中体温"+temp+"摄氏度"+",心率"+heartjump_sco+"跳每分钟，" +
+                    "收缩压"+bph_sco+"千帕，舒张压"+bpl_sco+"千帕，血氧百分之"+ox_sco+",请保持当前健康状态，祝您生活愉快");
         }
     }
+
+
+
+    private void InitReportSco(){
+        Intent intent = getIntent();
+        bp_high_soc=intent.getStringExtra("舒张压异常指数");
+        bp_low_soc=intent.getStringExtra("收缩压异常指数");
+        bo_soc=intent.getStringExtra("血氧异常指数");
+        heart_soc=intent.getStringExtra("心率异常指数");
+
+        heartTextView.setText("心率异常指数:"+heart_soc);
+        bloodTextView.setText("舒张压异常指数："+bp_high_soc+" 收缩压异常指数"+bp_low_soc);
+        bloodOxTextView.setText("血氧异常指数"+bo_soc);
+    }
+
 
 
 }

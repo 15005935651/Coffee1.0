@@ -59,7 +59,7 @@ public class MedicineKonwledge extends AppCompatActivity {
 //            }
 //        });
 //        mRefreshLayout.autoRefresh();
-        medicineWebView.loadUrl("https://www.baidu.com/");
+        medicineWebView.loadUrl("https://wenku.baidu.com/view/92816d61ee06eff9aef80798.html");
 
         medicineWebView.getSettings().setJavaScriptEnabled(true);
         medicineWebView.setWebViewClient(new WebViewClient() {

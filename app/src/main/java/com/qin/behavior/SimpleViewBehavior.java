@@ -14,9 +14,6 @@ import android.view.animation.Transformation;
 
 import com.qin.R;
 
-/**
- * Created by Administrator on 2018/4/15 0015.
- */
 
 public class SimpleViewBehavior extends CoordinatorLayout.Behavior<View> {
 

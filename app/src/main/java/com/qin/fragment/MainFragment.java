@@ -82,9 +82,7 @@ import butterknife.Unbinder;
 
 import static com.lzy.okgo.model.Progress.TAG;
 
-/**
- * Created by Administrator on 2018/3/28 0028.
- */
+
 
 public class MainFragment extends Fragment {
 

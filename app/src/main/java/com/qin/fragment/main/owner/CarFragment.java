@@ -19,11 +19,8 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.qin.R;
 import com.qin.adapter.recyclerview.MarginDecorationVertical;
-import com.qin.adapter.recyclerview.allcar.AllCarBrandRecyclerViewAdapter;
 import com.qin.adapter.recyclerview.allcar.AllCarRecyclerViewAdapter;
 import com.qin.fragment.BaseFragment;
-import com.qin.pojo.allcartype.AllCarType;
-import com.qin.pojo.allcartype.Result;
 import com.qin.pojo.allcartype.car.Car;
 import com.qin.pojo.allcartype.car.Lists;
 import com.qin.util.ScreenUtils;
@@ -35,9 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/4/18 0018.
- */
 
 public class CarFragment extends BaseFragment {
 

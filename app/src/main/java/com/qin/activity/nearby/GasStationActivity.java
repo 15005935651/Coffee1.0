@@ -46,9 +46,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by Administrator on 2018/3/30 0030.
- */
 
 public class GasStationActivity extends AppCompatActivity {
 

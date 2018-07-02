@@ -8,9 +8,7 @@ import android.text.style.AbsoluteSizeSpan;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
-/**
- * Created by Administrator on 2018/3/16 0016.
- */
+
 
 public class EditTextHintSize {
 

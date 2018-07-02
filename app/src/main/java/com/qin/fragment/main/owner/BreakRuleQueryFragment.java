@@ -34,9 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/4/7 0007.
- */
+
 
 public class BreakRuleQueryFragment extends BaseFragment {
 
@@ -72,7 +70,7 @@ public class BreakRuleQueryFragment extends BaseFragment {
     private String cityName;
     private static final String URL_HPZL = "&hpzl=";
     private String mHpzl;
-    private static final String URL_APPKEY = "&key=af1f35f8c53742ac996eb6da3d5c8223";
+    private static final String URL_APPKEY = "&key=1c898ee3e50a46a8811c19616463e4e4";
     private ArrayList<Lists> mList;
     private Dialog mDialog;
 

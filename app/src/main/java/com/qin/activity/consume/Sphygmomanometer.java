@@ -15,9 +15,8 @@ import android.view.SurfaceView;
 
 
 import java.text.DecimalFormat;
-
 /**
- * Created by yinxiaofei on 2016/1/13.
+ * Created by Administrator on 2018/5/6.
  */
 
 public class Sphygmomanometer extends SurfaceView implements SurfaceHolder.Callback ,Runnable{
@@ -286,7 +285,7 @@ public class Sphygmomanometer extends SurfaceView implements SurfaceHolder.Callb
         );
 
 
-        mCanvas.drawText(display + " kpa",
+        mCanvas.drawText(display-30 + " kpa",
                 mWith*3/2- ShowNumberTextPaint.getTextSize() * 2,
                 temperatureAllLong/2+ShowNumberTextPaint.getTextSize(),
                 ShowNumberTextPaint
@@ -400,7 +399,7 @@ public class Sphygmomanometer extends SurfaceView implements SurfaceHolder.Callb
 
     }
 
-    private float trueTemperature = 0;
+    private float trueTemperature = 70;
 
     public void setTargetTemperature(float targetTemperature) {
         trueTemperature = targetTemperature;

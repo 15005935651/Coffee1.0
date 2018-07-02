@@ -30,9 +30,6 @@ import butterknife.Unbinder;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-/**
- * Created by Administrator on 2018/3/30 0012.
- */
 
 public class CityAllGasFragment extends BaseFragment{
 

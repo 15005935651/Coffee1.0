@@ -35,7 +35,7 @@ public class DashboardView extends View {
     private int mSweepAngle = 240; // 绘制角度
     private int mMin = 350; // 最小值
     private int mMax = 950; // 最大值
-    private String mHeaderText = "Coffee"; // 表头
+    private String mHeaderText = "驾驶宝"; // 表头
     private int mCreditValue = 782; // 信用分
     private int mSparkleWidth; // 亮点宽度
     private int mProgressWidth; // 进度圆弧宽度
@@ -88,8 +88,8 @@ public class DashboardView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 
         mPadding = Math.max(
-                Math.max(getPaddingLeft(), getPaddingTop())+40,
-                Math.max(getPaddingRight(), getPaddingBottom())+40
+                Math.max(getPaddingLeft(), getPaddingTop())+30,
+                Math.max(getPaddingRight(), getPaddingBottom())+30
         );
         setPadding(mPadding, mPadding, mPadding, mPadding);
 
@@ -330,7 +330,7 @@ public class DashboardView extends View {
 
     private String getFormatTimeStr() {
         if (mDateFormat == null) {
-            mDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+            mDateFormat = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss", Locale.CHINA);
         }
         return String.format("体检时间:%s", mDateFormat.format(new Date()));
     }

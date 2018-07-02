@@ -22,7 +22,9 @@ import android.util.TypedValue;
 import android.view.View;
 
 import com.qin.R;
-
+/**
+ * Created by Administrator on 2018/5/6.
+ */
 
 public class RadarView extends View {
 

@@ -47,9 +47,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/3/30 0030.
- */
 
 public class TSixYearFragment extends BaseFragment implements OnChartValueSelectedListener {
     @BindView(R.id.piechart)

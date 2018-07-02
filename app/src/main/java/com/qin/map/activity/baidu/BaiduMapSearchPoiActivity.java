@@ -78,9 +78,6 @@ import butterknife.OnClick;
 
 import static android.support.v7.widget.DividerItemDecoration.VERTICAL;
 
-/**
- * Created by Administrator on 2018/3/14 0014.
- */
 
 public class BaiduMapSearchPoiActivity extends AppCompatActivity implements OnGetSuggestionResultListener, OnGetPoiSearchResultListener, View.OnClickListener, INaviInfoCallback {
 

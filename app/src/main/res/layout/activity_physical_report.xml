@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".activity.PhysicalReportActivity">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/physical_report_toolbar"
         android:layout_width="match_parent"
@@ -59,13 +60,17 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/classmzzj" />
+                    android:src="@drawable/temp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="分数" />
+                    android:text="37.2℃" />
+
+
+
+
             </LinearLayout>
 
 
@@ -73,6 +78,16 @@
             <com.qin.activity.consume.DashboardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:padding="35dp"
+                android:text="您的血压测量值正常，心率测量值正常\n血氧饱和度正常,情绪稳定，请继续保持当前健康的生活方式，祝您好心情！"
+                android:textColor="#666"
+                android:textSize="15sp" />
 
             <View
                 android:layout_width="match_parent"
@@ -93,6 +108,7 @@
                     android:src="@mipmap/classmzzj" />
 
                 <TextView
+                    android:id="@+id/heartTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -126,6 +142,7 @@
                     android:src="@mipmap/classmzzj" />
 
                 <TextView
+                    android:id="@+id/bloodTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -165,10 +182,11 @@
                     android:src="@mipmap/classsbjy" />
 
                 <TextView
+                    android:id="@+id/bloodOxTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="血糖" />
+                    android:text="血氧" />
             </LinearLayout>
 
 

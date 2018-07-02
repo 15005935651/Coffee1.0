@@ -32,9 +32,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by Administrator on 2018/4/18 0018.
- */
 
 public class CarBrandFragment extends BaseFragment {
 

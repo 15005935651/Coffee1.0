@@ -10,12 +10,8 @@ import android.view.WindowManager;
 import com.baidu.lbsapi.BMapManager;
 import com.baidu.lbsapi.panoramaview.PanoramaView;
 import com.qin.R;
-import com.qin.application.MyApplication;
 import com.qin.util.ToastUtils;
 
-/**
- * Created by Administrator on 2018/4/3 0003.
- */
 
 public class BaiduMapPanoramaActivity extends AppCompatActivity {
 

@@ -64,9 +64,6 @@ import butterknife.Unbinder;
 import static android.app.Activity.RESULT_OK;
 import static com.vondear.rxtools.view.dialog.RxDialogChooseImage.LayoutType.TITLE;
 
-/**
- * Created by Administrator on 2018/4/7 0007.
- */
 
 public class BreakAlarmFragment extends BaseFragment {
 

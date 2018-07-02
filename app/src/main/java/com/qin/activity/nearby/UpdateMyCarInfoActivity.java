@@ -56,9 +56,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 import static com.vondear.rxtools.view.dialog.RxDialogChooseImage.LayoutType.TITLE;
 
-/**
- * Created by Administrator on 2018/5/9.
- */
+
 
 public class UpdateMyCarInfoActivity extends AppCompatActivity {
 
