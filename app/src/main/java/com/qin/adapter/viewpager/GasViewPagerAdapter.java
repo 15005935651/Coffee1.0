@@ -9,9 +9,6 @@ import com.qin.fragment.BaseFragment;
 import java.util.List;
 
 
-/**
- * Created by Administrator on 2018/3/13 0013.
- */
 
 public class GasViewPagerAdapter extends FragmentPagerAdapter {
 

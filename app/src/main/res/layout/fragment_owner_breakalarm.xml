@@ -35,7 +35,6 @@
                 app:titleTextColor="@color/colorWrite" />
 
             <LinearLayout
-                android:id="@+id/ll_alarm_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">

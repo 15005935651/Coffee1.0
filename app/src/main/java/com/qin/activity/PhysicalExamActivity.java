@@ -1,7 +1,10 @@
 package com.qin.activity;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,6 +24,7 @@ import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.mylhyl.circledialog.CircleDialog;
 import com.qin.R;
 import com.qin.pojo.HealthScroces.PersonPhySource;
 import com.qin.util.ToastUtils;
@@ -54,12 +58,12 @@ public class PhysicalExamActivity extends AppCompatActivity {
     //http://localhost:8080/Coffee1.0/PhyExam?user_name=小红&blood_pressure_high=110
     // &blood_pressure_low=70&temperature=70&blood_oxygen=0.95&hreat_rate=90
     //体检的医疗数据
-    private String user_name="赵鑫鑫";
-    private double blood_pressure_high=110;
-    private double blood_pressure_low=70;
-    private double temperature=37.2;
-    private double blood_oxygen=0.95;
-    private double hreat_rate=80;
+    private String user_name = "赵鑫鑫";
+    private double blood_pressure_high = 110;
+    private double blood_pressure_low = 70;
+    private double temperature = 37.2;
+    private double blood_oxygen = 0.95;
+    private double hreat_rate = 80;
 
     //服务器回传的数据检测异常指数
     private double blood_pressure_high_sro;//收缩压
@@ -69,26 +73,25 @@ public class PhysicalExamActivity extends AppCompatActivity {
     private double hreat_rate_sro;//心率
 
 
-
     //发送体检的数据给服务器
-    private void sendRort(){
+    private void sendRort() {
 
         try {
-            new String(user_name.getBytes(),"UTF-8");
-        }catch (Exception e){
+            new String(user_name.getBytes(), "UTF-8");
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-        String url = "http://172.17.167.178:8080/LBS_SSH/PhyExam?user_name="+user_name+
-                "&blood_pressure_high="+blood_pressure_high+"&blood_pressure_low="+blood_pressure_low+"&temperature="
-                +temperature + "&blood_oxygen="+blood_oxygen+"&hreat_rate="+hreat_rate;
+        String url = "http://188n20451e.51mypc.cn:16554/LBS_SSH/PhyExam?user_name=" + user_name +
+                "&blood_pressure_high=" + blood_pressure_high + "&blood_pressure_low=" + blood_pressure_low + "&temperature="
+                + temperature + "&blood_oxygen=" + blood_oxygen + "&hreat_rate=" + hreat_rate;
         OkGo.<String>post(url).tag(this).execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
                 Log.i("phy_report", response.body());
                 //String s = response.body();
-                Log.i("body",response.body());
+                Log.i("body", response.body());
                 parseHealthSroceData(response.body());
 //                bluetooth.setImageResource(R.drawable.finish);
                 phyExamBluetoothConnect.setBackgroundColor(getResources().getColor(R.color.colorGreen));
@@ -107,23 +110,23 @@ public class PhysicalExamActivity extends AppCompatActivity {
     }
 
     //解析体检回来的分数指标
-    private void parseHealthSroceData(String json){
+    private void parseHealthSroceData(String json) {
 
         Gson gson = new Gson();
         PersonPhySource ps = gson.fromJson(json, PersonPhySource.class);
-        user_name=ps.getName();
-        blood_pressure_high_sro=ps.getbloodpressurehigh_sco();
-        blood_pressure_low_sro=ps.getbloodpressurelow_sco();
-        temperature_sro=ps.gettemperature_sco();
-        blood_oxygen_sro=ps.getbloodoxygen_sco();
-        hreat_rate_sro=ps.gethreatrate_sco();
+        user_name = ps.getName();
+        blood_pressure_high_sro = ps.getbloodpressurehigh_sco();
+        blood_pressure_low_sro = ps.getbloodpressurelow_sco();
+        temperature_sro = ps.gettemperature_sco();
+        blood_oxygen_sro = ps.getbloodoxygen_sco();
+        hreat_rate_sro = ps.gethreatrate_sco();
 
-        Log.i("姓名",user_name);
-        Log.i("收缩压异常指数",String.valueOf(blood_pressure_high_sro));
-        Log.i("舒张压异常指数",String.valueOf(blood_pressure_low_sro));
-        Log.i("体温异常指数",String.valueOf(temperature_sro));
-        Log.i("血氧异常指数",String.valueOf(blood_oxygen_sro));
-        Log.i("心率异常指数",String.valueOf(hreat_rate_sro));
+        Log.i("姓名", user_name);
+        Log.i("收缩压异常指数", String.valueOf(blood_pressure_high_sro));
+        Log.i("舒张压异常指数", String.valueOf(blood_pressure_low_sro));
+        Log.i("体温异常指数", String.valueOf(temperature_sro));
+        Log.i("血氧异常指数", String.valueOf(blood_oxygen_sro));
+        Log.i("心率异常指数", String.valueOf(hreat_rate_sro));
 
     }
 
@@ -245,17 +248,39 @@ public class PhysicalExamActivity extends AppCompatActivity {
                     //ToastUtils.showBgResource(getBaseContext(), "连接超时请重试");
                     stopAnimation();
                     phyExamBluetoothConnect.setProgress(-1);
+
+                    new CircleDialog.Builder(PhysicalExamActivity.this)
+                            .setTitleIcon(R.drawable.ic_error_svg)
+                            .setTitle("提示")
+                            .setTextColor(Color.GRAY)
+                            .setText("该连接需要特定蓝牙设备，无法连接请在浏览器中输入以下URL进行健康测试(参数手动设置)：\n" +
+                                    "http://188n20451e.51mypc.cn:16554/LBS_SSH/PhyExam?user_name=Coffee &blood_pressure_high=110&blood_pressure_low=70&temperature=37.2&blood_oxygen=0.95&hreat_rate=130")
+                            .setPositive("确认", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+
+                                    cm.setText("http://188n20451e.51mypc.cn:16554/LBS_SSH/PhyExam?user_name=Coffee &blood_pressure_high=110&blood_pressure_low=70&temperature=37.2&blood_oxygen=0.95&hreat_rate=130");
+                                    ToastUtils.showBgResource(PhysicalExamActivity.this,"已复制到粘贴板");
+                                    Uri uri=Uri.parse("http://www.baidu.com");
+                                    Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+                                    startActivity(intent);
+                                }
+                            })
+                            .show();
+
+
                 }
             });
         } else {
             Intent intent = new Intent();
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.setClass(getApplication(), PhysicalReportActivity.class);
-            intent.putExtra("收缩压异常指数",String.valueOf(blood_pressure_high_sro));
-            intent.putExtra("舒张压异常指数",String.valueOf(blood_pressure_low_sro));
-            intent.putExtra("体温异常指数",String.valueOf(temperature_sro));
-            intent.putExtra("血氧异常指数",String.valueOf(blood_oxygen_sro));
-            intent.putExtra("心率异常指数",String.valueOf(hreat_rate_sro));
+            intent.putExtra("收缩压异常指数", String.valueOf(blood_pressure_high_sro));
+            intent.putExtra("舒张压异常指数", String.valueOf(blood_pressure_low_sro));
+            intent.putExtra("体温异常指数", String.valueOf(temperature_sro));
+            intent.putExtra("血氧异常指数", String.valueOf(blood_oxygen_sro));
+            intent.putExtra("心率异常指数", String.valueOf(hreat_rate_sro));
             startActivity(intent);
         }
 

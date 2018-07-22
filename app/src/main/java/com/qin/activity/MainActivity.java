@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
                 .withActivity(MainActivity.this)
                 .withCompactStyle(false)
                 .withHeaderBackground(R.color.colorGreen)
-                .addProfiles(new ProfileDrawerItem().withName(user_name).withEmail(user_phonenumber).withIcon(R.mipmap.zxx).withIdentifier(100),
+                .addProfiles(new ProfileDrawerItem().withName(user_name).withEmail(user_phonenumber).withIcon(R.mipmap.small_car).withIdentifier(100),
                      //   new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.mipmap.gas_blank).withIdentifier(101),
                         new ProfileSettingDrawerItem().withName("添加账号").withDescription("添加一个账号").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_add).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(102),
                         new ProfileSettingDrawerItem().withName("管理账号").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(103))

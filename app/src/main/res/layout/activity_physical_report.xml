@@ -13,28 +13,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorGreen"
+        android:gravity="center"
         app:navigationIcon="@drawable/ic_arrow_back_white"
         app:title="体检报告"
-        app:titleTextColor="@color/colorWrite"
-        android:gravity="center">
+        app:titleTextColor="@color/colorWrite">
 
-    <ImageView
-        android:id="@+id/voice_report"
-        android:layout_gravity="end"
-        android:text="bold"
-        android:src="@drawable/svg_voice_report"
-        android:layout_marginEnd="10dp"
-        android:layout_width="30dp"
-        android:layout_height="30dp"/>
+        <ImageView
+            android:id="@+id/voice_report"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/svg_voice_report"
+            android:text="bold" />
     </android.support.v7.widget.Toolbar>
 
 
     <android.support.v4.widget.NestedScrollView
 
-        android:fillViewport="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fadingEdge="none"
+        android:fillViewport="true"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
@@ -47,15 +47,15 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="12dp"
-                android:background="@android:color/white"/>
+                android:background="@android:color/white" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:background="@android:color/white"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:background="@android:color/white">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -69,10 +69,7 @@
                     android:text="37.2℃" />
 
 
-
-
             </LinearLayout>
-
 
 
             <com.qin.activity.consume.DashboardView
@@ -92,7 +89,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
-                android:background="@color/colorGray"/>
+                android:background="@color/colorGray" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -132,8 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:gravity="center_vertical"
                 android:background="@android:color/white"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -150,22 +147,18 @@
             </LinearLayout>
 
 
-
-
             <com.qin.activity.consume.Sphygmomanometer
                 android:id="@+id/xueya"
                 android:layout_width="match_parent"
-                android:layout_height="200dp" >
+                android:layout_height="200dp">
 
             </com.qin.activity.consume.Sphygmomanometer>
-
 
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="8dp"
                 android:background="@color/colorGray" />
-
 
 
             <LinearLayout
@@ -202,11 +195,12 @@
                 android:layout_marginTop="10dp"
                 android:background="@color/colorGray" />
 
-            
+
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorGreen"/>
+                android:background="@color/colorGreen" />
+
 
         </LinearLayout>
 

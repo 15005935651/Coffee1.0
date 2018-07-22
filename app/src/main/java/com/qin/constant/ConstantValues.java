@@ -6,36 +6,36 @@ public class ConstantValues {
     /**
      * 访问服务器的url
      */
-    public static final String  URL_LOGIN = "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_userlogin.action?";
-    public static final String  URL_PARKING = "http://172.17.167.178:8080/LBS_SSH/MapQuery/map_mapQuery.action?";
-    public static final String  URL_GAS = "http://172.17.167.178:8080/LBS_SSH/MapQuery/map_gasQuery.action?";
-    public static final String  URL_WASH = "http://172.17.167.178:8080/LBS_SSH/MapQuery/map_othersQuery.action?";
-    public static final String  URL_REPAIRSHOP = "http://172.17.167.178:8080/LBS_SSH/MapQuery/map_mapQuery.action?";
-    public static final String  URL_TOLIET = "http://172.17.167.178:8080/LBS_SSH/MapQuery/map_othersQuery.action?";
-    public static final String  URL_VEHICLE = "http://172.17.167.178:8080/LBS_SSH/MapQuery/map_othersQuery.action?";
-    public static final String  URL_PERSONINFO = "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_userquery.action?";
-    public static final String  URL_MYCAR ="http://172.17.167.178:8080/LBS_SSH/UserLogin/user_carquery.action?";
-    public static final String  URL_MYCARUUPDATE = "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_carupdate.action?";
-    public static final String  URL_HISTORYPARKING = "http://172.17.167.178:8080/LBS_SSH/HisInfo/hisinfo_accquery.action?";
-    public static final String  URL_HISTORY = "http://172.17.167.178:8080/LBS_SSH/HisInfo/hisinfo_accquery.action?";
-    public static final String  URL_HISTORYDELETE = "http://172.17.167.178:8080/LBS_SSH/HisInfo/hisinfo_accdelete.action?";
-    public static final String  URL_PERSONINFOUPDATE = "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_userupdate.action?";
-    public static final String  URL_HISTORYDELETEALL = "http://172.17.167.178:8080/LBS_SSH/HisInfo/hisinfo_accdeleteall.action?";
-    public static final String  URL_HISTORYCOST= "http://172.17.167.178:8080/LBS_SSH/HisInfo/hisinfo_acccost.action?";
-    public static final String  URL_REGISTER= "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_userregister.action?";
-    public static final String  URL_COLLECT= "http://172.17.167.178:8080/LBS_SSH/CollectInfo/collectinfo_collectadd.action?";
-    public static final String  URL_COLLECTQUERY= "http://172.17.167.178:8080/LBS_SSH/CollectInfo/collectinfo_collectquery.action?";
-    public static final String  URL_COLLECTDELETE= "http://172.17.167.178:8080/LBS_SSH/CollectInfo/collectinfo_collectdelete.action? ";
-    public static final String  URL_COLLECTDELETEALL= "http://172.17.167.178:8080/LBS_SSH/CollectInfo/collectinfo_collectdelall.action?";
-    public static final String  URL_BREAKRULE= "http://172.17.167.178:8080/LBS_SSH/IllegalInfo/illegalinfo_illegalquery.action?";
-    public static final String  URL_BREAKALARM= "http://172.17.167.178:8080/LBS_SSH/Alarm/alarm_userAlarm.action?";
-    public static final String  URL_BREAKREPAIR= "http://172.17.167.178:8080/LBS_SSH/Fault/fault_userFault.action?";
-    public static final String  URL_BREAKALARMPIC= "http://172.17.167.178:8080/LBS_SSH/Alarm/alarm_userAlarmPic.action?";
-    public static final String  URL_BREAKAlARMHISTORY= "http://172.17.167.178:8080/LBS_SSH/Alarm/alarm_alarmQuery.action?";
-    public static final String  URL_BREAKREPAIRPIC= "http://172.17.167.178:8080/LBS_SSH/Fault/fault_userFaultPic.action?";
-    public static final String  URL_BREAKREPAIRHISTORY= "http://172.17.167.178:8080/LBS_SSH/Fault/fault_faultQuery.action?";
-    public static final String  URL_REGISTERPIC= "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_userRegisterPic.action?";
-    public static final String  URL_MYCARUPDATEPIC= "http://172.17.167.178:8080/LBS_SSH/UserLogin/user_userModifyPic.action?";
+    public static final String  URL_LOGIN = "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_userlogin.action?";
+    public static final String  URL_PARKING = "http://188n20451e.51mypc.cn:16554/LBS_SSH/MapQuery/map_mapQuery.action?";
+    public static final String  URL_GAS = "http://188n20451e.51mypc.cn:16554/LBS_SSH/MapQuery/map_gasQuery.action?";
+    public static final String  URL_WASH = "http://188n20451e.51mypc.cn:16554/LBS_SSH/MapQuery/map_othersQuery.action?";
+    public static final String  URL_REPAIRSHOP = "http://188n20451e.51mypc.cn:16554/LBS_SSH/MapQuery/map_mapQuery.action?";
+    public static final String  URL_TOLIET = "http://188n20451e.51mypc.cn:16554/LBS_SSH/MapQuery/map_othersQuery.action?";
+    public static final String  URL_VEHICLE = "http://188n20451e.51mypc.cn:16554/LBS_SSH/MapQuery/map_othersQuery.action?";
+    public static final String  URL_PERSONINFO = "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_userquery.action?";
+    public static final String  URL_MYCAR ="http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_carquery.action?";
+    public static final String  URL_MYCARUUPDATE = "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_carupdate.action?";
+    public static final String  URL_HISTORYPARKING = "http://188n20451e.51mypc.cn:16554/LBS_SSH/HisInfo/hisinfo_accquery.action?";
+    public static final String  URL_HISTORY = "http://188n20451e.51mypc.cn:16554/LBS_SSH/HisInfo/hisinfo_accquery.action?";
+    public static final String  URL_HISTORYDELETE = "http://188n20451e.51mypc.cn:16554/LBS_SSH/HisInfo/hisinfo_accdelete.action?";
+    public static final String  URL_PERSONINFOUPDATE = "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_userupdate.action?";
+    public static final String  URL_HISTORYDELETEALL = "http://188n20451e.51mypc.cn:16554/LBS_SSH/HisInfo/hisinfo_accdeleteall.action?";
+    public static final String  URL_HISTORYCOST= "http://188n20451e.51mypc.cn:16554/LBS_SSH/HisInfo/hisinfo_acccost.action?";
+    public static final String  URL_REGISTER= "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_userregister.action?";
+    public static final String  URL_COLLECT= "http://188n20451e.51mypc.cn:16554/LBS_SSH/CollectInfo/collectinfo_collectadd.action?";
+    public static final String  URL_COLLECTQUERY= "http://188n20451e.51mypc.cn:16554/LBS_SSH/CollectInfo/collectinfo_collectquery.action?";
+    public static final String  URL_COLLECTDELETE= "http://188n20451e.51mypc.cn:16554/LBS_SSH/CollectInfo/collectinfo_collectdelete.action? ";
+    public static final String  URL_COLLECTDELETEALL= "http://188n20451e.51mypc.cn:16554/LBS_SSH/CollectInfo/collectinfo_collectdelall.action?";
+    public static final String  URL_BREAKRULE= "http://188n20451e.51mypc.cn:16554/LBS_SSH/IllegalInfo/illegalinfo_illegalquery.action?";
+    public static final String  URL_BREAKALARM= "http://188n20451e.51mypc.cn:16554/LBS_SSH/Alarm/alarm_userAlarm.action?";
+    public static final String  URL_BREAKREPAIR= "http://188n20451e.51mypc.cn:16554/LBS_SSH/Fault/fault_userFault.action?";
+    public static final String  URL_BREAKALARMPIC= "http://188n20451e.51mypc.cn:16554/LBS_SSH/Alarm/alarm_userAlarmPic.action?";
+    public static final String  URL_BREAKAlARMHISTORY= "http://188n20451e.51mypc.cn:16554/LBS_SSHAlarm/alarm_alarmQuery.action?";
+    public static final String  URL_BREAKREPAIRPIC= "http://188n20451e.51mypc.cn:16554/LBS_SSH/Fault/fault_userFaultPic.action?";
+    public static final String  URL_BREAKREPAIRHISTORY= "http://188n20451e.51mypc.cn:16554/LBS_SSH/Fault/fault_faultQuery.action?";
+    public static final String  URL_REGISTERPIC= "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_userRegisterPic.action?";
+    public static final String  URL_MYCARUPDATEPIC= "http://188n20451e.51mypc.cn:16554/LBS_SSH/UserLogin/user_userModifyPic.action?";
 
 
     public static final String LOGIN_CHECKBOX = "login_checkbox";

@@ -3,12 +3,7 @@
   */
 package com.qin.pojo.forecast;
 
-/**
- * Auto-generated: 2018-04-08 12:13:32
- *
- * @author bejson.com (i@bejson.com)
- * @website http://www.bejson.com/java2pojo/
- */
+
 public class PlateForecast {
 
     private String status;

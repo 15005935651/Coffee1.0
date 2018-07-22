@@ -903,6 +903,24 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/colorGray" />
 
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+
+                        <Switch
+                            android:id="@+id/id_open_floating"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="@dimen/size_16_dp"
+                            android:text="@string/is_open_floating_win" />
+
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </android.support.v4.widget.NestedScrollView>

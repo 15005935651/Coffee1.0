@@ -58,22 +58,23 @@ public class PhysicalReportActivity extends AppCompatActivity {
     TextView bloodOxTextView;
 
 
+
     private LineChartData data;
 
 
     //分数先赋初值
-    private String bp_high_soc="0.03";
-    private String bp_low_soc="0.04";
-    private String heart_soc="0.11";
-    private String bo_soc="0.07";
+    private String bp_high_soc = "0.03";
+    private String bp_low_soc = "0.04";
+    private String heart_soc = "0.11";
+    private String bo_soc = "0.07";
 
-    String health_sco="782";
-    String heartjump_sco="70";
-    String bph_sco="110";
-    String bpl_sco="80";
-    String ox_sco="九十五";
-    String temp="37.2";
-    String degree="良好";
+    String health_sco = "782";
+    String heartjump_sco = "70";
+    String bph_sco = "110";
+    String bpl_sco = "80";
+    String ox_sco = "九十五";
+    String temp = "37.2";
+    String degree = "良好";
 
     //语音播报
     private Speek speek;
@@ -87,10 +88,10 @@ public class PhysicalReportActivity extends AppCompatActivity {
         physicalReportToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PhysicalReportActivity.this.finish();
+                finish();
+                //moveTaskToBack(true);
             }
         });
-
 
         //初始化语音播报
         initPermission();
@@ -106,7 +107,6 @@ public class PhysicalReportActivity extends AppCompatActivity {
 
         //获取体检报告的异常指数
         InitReportSco();
-
         xueya.setTargetTemperature(110.0f);
 
     }
@@ -119,8 +119,8 @@ public class PhysicalReportActivity extends AppCompatActivity {
 
         // The same for displaying Tempo/Height chart.
 
-        float minHeight = 200;
-        float maxHeight = 300;
+        float minHeight = 50;
+        float maxHeight = 130;
         float tempoRange = 15; // from 0min/km to 15min/km
 
         float scale = tempoRange / maxHeight;
@@ -136,7 +136,7 @@ public class PhysicalReportActivity extends AppCompatActivity {
         values = new ArrayList<PointValue>();
         for (int i = 0; i < numValues; ++i) {
             // Some random height values, add +200 to make line a little more natural
-            float rawHeight = (float) (Math.random() * 100 + 200);
+            float rawHeight = (float) (Math.random() * 10 + 50);
             float normalizedHeight = rawHeight * scale - sub;
             values.add(new PointValue(i, normalizedHeight));
         }
@@ -151,9 +151,11 @@ public class PhysicalReportActivity extends AppCompatActivity {
         values = new ArrayList<PointValue>();
         for (int i = 0; i < numValues; ++i) {
             // Some random raw tempo values.
-            float realTempo = (float) Math.random() * 6 + 2;
-            float revertedTempo = tempoRange - realTempo;
-            values.add(new PointValue(i, revertedTempo));
+//            float realTempo = (float) Math.random() * 3 + 2;
+//            float revertedTempo = tempoRange - realTempo;
+            float rawHeight = (float) (Math.random() * 10 + 70);
+            float normalizedHeight = rawHeight * scale - sub;
+            values.add(new PointValue(i, normalizedHeight));
         }
 
         line = new Line(values);
@@ -164,10 +166,10 @@ public class PhysicalReportActivity extends AppCompatActivity {
 
         data = new LineChartData(lines);
         Axis distanceAxis = new Axis();
-        distanceAxis.setName("Distance");
+        distanceAxis.setName("时间");
         distanceAxis.setTextColor(ChartUtils.COLOR_ORANGE);
         distanceAxis.setMaxLabelChars(4);
-        distanceAxis.setFormatter(new SimpleAxisValueFormatter().setAppendedText("km".toCharArray()));
+        distanceAxis.setFormatter(new SimpleAxisValueFormatter().setAppendedText("s".toCharArray()));
         distanceAxis.setHasLines(true);
         distanceAxis.setHasTiltedLabels(true);
         data.setAxisXBottom(distanceAxis);
@@ -178,13 +180,14 @@ public class PhysicalReportActivity extends AppCompatActivity {
             axisValues.add(new AxisValue(i).setLabel(formatMinutes(tempoRange - i)));
         }
 
-        Axis tempoAxis = new Axis(axisValues).setName("Tempo [min/km]").setHasLines(true).setMaxLabelChars(4)
-                .setTextColor(ChartUtils.COLOR_RED);
-        data.setAxisYLeft(tempoAxis);
+//        Axis tempoAxis = new Axis(axisValues).setName("心率 [跳/分钟]").setHasLines(true).setMaxLabelChars(4)
+//                .setTextColor(ChartUtils.COLOR_RED);
+        data.setAxisYLeft(new Axis().setName("跳速[跳/分钟]").setMaxLabelChars(3)
+                .setFormatter(new HeightValueFormatter(scale, sub, 0)));
 
         // *** Same as in Speed/Height chart.
         // Height axis, this axis need custom formatter that will translate values back to real height values.
-        data.setAxisYRight(new Axis().setName("Height [m]").setMaxLabelChars(3)
+        data.setAxisYRight(new Axis().setName("跳速[跳/分钟]").setMaxLabelChars(3)
                 .setFormatter(new HeightValueFormatter(scale, sub, 0)));
 
         // Set data
@@ -248,8 +251,8 @@ public class PhysicalReportActivity extends AppCompatActivity {
         ValueShape shape = ValueShape.CIRCLE;
         int BUBBLES_NUM = 8;
         List<BubbleValue> values = new ArrayList<BubbleValue>();
-        for (int i = 0; i < BUBBLES_NUM; ++i) {
-            BubbleValue value = new BubbleValue(i, (float) Math.random() * 100, (float) Math.random() * 1000);
+        for (int i = 1; i <= BUBBLES_NUM; ++i) {
+            BubbleValue value = new BubbleValue(i, 90 + (float) Math.random() * 10, 90 + (float) Math.random() * 10);
             value.setColor(ChartUtils.pickColor());
             value.setShape(shape);
             values.add(value);
@@ -259,8 +262,8 @@ public class PhysicalReportActivity extends AppCompatActivity {
         bubbledata.setHasLabelsOnlyForSelected(true);
         Axis axisX = new Axis();
         Axis axisY = new Axis().setHasLines(true);
-        axisX.setName("Axis X");
-        axisY.setName("Axis Y");
+        axisX.setName("时间[min]");
+        axisY.setName("含氧量[%]");
         bubbledata.setAxisXBottom(axisX);
         bubbledata.setAxisYLeft(axisY);
         bubbleChartView.setBubbleChartData(bubbledata);
@@ -299,26 +302,23 @@ public class PhysicalReportActivity extends AppCompatActivity {
     public void onViewClicked() {
         //避免连接点击造成多次播放
         if (AvoidQuickClick.isFastClick()) {
-            speek.Speeking("您的体检分数为"+health_sco+"分，身体状况"+degree +
-                    "其中体温"+temp+"摄氏度"+",心率"+heartjump_sco+"跳每分钟，" +
-                    "收缩压"+bph_sco+"千帕，舒张压"+bpl_sco+"千帕，血氧百分之"+ox_sco+",请保持当前健康状态，祝您生活愉快");
+            speek.Speeking("您的体检分数为" + health_sco + "分，身体状况" + degree +
+                    "其中体温" + temp + "摄氏度" + ",心率" + heartjump_sco + "跳每分钟，" +
+                    "收缩压" + bph_sco + "千帕，舒张压" + bpl_sco + "千帕，血氧百分之" + ox_sco + ",请保持当前健康状态，祝您生活愉快");
         }
     }
 
 
-
-    private void InitReportSco(){
+    private void InitReportSco() {
         Intent intent = getIntent();
-        bp_high_soc=intent.getStringExtra("舒张压异常指数");
-        bp_low_soc=intent.getStringExtra("收缩压异常指数");
-        bo_soc=intent.getStringExtra("血氧异常指数");
-        heart_soc=intent.getStringExtra("心率异常指数");
+        bp_high_soc = intent.getStringExtra("舒张压异常指数");
+        bp_low_soc = intent.getStringExtra("收缩压异常指数");
+        bo_soc = intent.getStringExtra("血氧异常指数");
+        heart_soc = intent.getStringExtra("心率异常指数");
 
-        heartTextView.setText("心率异常指数:"+heart_soc);
-        bloodTextView.setText("舒张压异常指数："+bp_high_soc+" 收缩压异常指数"+bp_low_soc);
-        bloodOxTextView.setText("血氧异常指数"+bo_soc);
+        heartTextView.setText("心率异常指数:" + heart_soc);
+        bloodTextView.setText("舒张压异常指数：" + bp_high_soc + " 收缩压异常指数" + bp_low_soc);
+        bloodOxTextView.setText("血氧异常指数" + bo_soc);
     }
-
-
 
 }

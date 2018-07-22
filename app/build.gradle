@@ -39,6 +39,9 @@ android {
     }
     productFlavors {
     }
+
+
+
 }
 
 dependencies {
@@ -92,4 +95,5 @@ dependencies {
     compile 'com.github.zzz40500:android-shapeLoadingView:1.0.3.2'
     implementation project(':baiduvoice')
     implementation 'com.mylhyl:circleDialog:2.6.3'
+    implementation project(':ball-library')
 }

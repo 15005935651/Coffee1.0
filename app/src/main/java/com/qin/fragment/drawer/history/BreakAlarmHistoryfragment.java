@@ -96,7 +96,7 @@ public class BreakAlarmHistoryfragment extends BaseFragment {
                         Log.i("url_breakalarmhistory", response.body());
                         mDialog.dismiss();
                         String body = response.body();
-                        parseeData(body);
+                        //parseeData(body);
                     }
 
                     @Override

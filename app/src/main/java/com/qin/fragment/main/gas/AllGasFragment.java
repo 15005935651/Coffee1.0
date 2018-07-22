@@ -132,11 +132,11 @@ public class AllGasFragment extends BaseFragment implements OnRefreshLoadMoreLis
         Log.i("lat", mLat + "--------" + mLon);
 
         //下拉刷新，上拉加载更多
-        refreshGas.setOnRefreshLoadMoreListener(this);
-        refreshGas.setPrimaryColorsId(R.color.colorGreen, android.R.color.white);
-        accessNet(1, 10000,0);
-        mShareUrlSearch = ShareUrlSearch.newInstance();
-        mShareUrlSearch.setOnGetShareUrlResultListener(this);
+//        refreshGas.setOnRefreshLoadMoreListener(this);
+//        refreshGas.setPrimaryColorsId(R.color.colorGreen, android.R.color.white);
+//        accessNet(1, 10000,0);
+//        mShareUrlSearch = ShareUrlSearch.newInstance();
+//        mShareUrlSearch.setOnGetShareUrlResultListener(this);
 
     }
 
@@ -424,7 +424,7 @@ public class AllGasFragment extends BaseFragment implements OnRefreshLoadMoreLis
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        mShareUrlSearch.destroy();
+       // mShareUrlSearch.destroy();
         unbinder.unbind();
     }
 
@@ -506,7 +506,7 @@ public class AllGasFragment extends BaseFragment implements OnRefreshLoadMoreLis
 
         // 分享短串结果
         Intent it = new Intent(Intent.ACTION_SEND);
-        it.putExtra(Intent.EXTRA_TEXT, "您的朋友通过易行与您分享一个POI点详情: " + currentAddr
+        it.putExtra(Intent.EXTRA_TEXT, "您的朋友通过驾驶宝与您分享一个POI点详情: " + currentAddr
                 + " 链接：" + result.getUrl());
         it.setType("text/plain");
         startActivity(Intent.createChooser(it, "将路线分享到"));
@@ -518,7 +518,7 @@ public class AllGasFragment extends BaseFragment implements OnRefreshLoadMoreLis
 
         // 分享短串结果
         Intent it = new Intent(Intent.ACTION_SEND);
-        it.putExtra(Intent.EXTRA_TEXT, "您的朋友通过易行与您分享一个位置: " + currentAddr
+        it.putExtra(Intent.EXTRA_TEXT, "您的朋友通过驾驶宝与您分享一个位置: " + currentAddr
                 + "链接：" + result.getUrl());
         it.setType("text/plain");
         startActivity(Intent.createChooser(it, "将位置分享到"));
@@ -528,7 +528,7 @@ public class AllGasFragment extends BaseFragment implements OnRefreshLoadMoreLis
     @Override
     public void onGetRouteShareUrlResult(ShareUrlResult shareUrlResult) {
         Intent it = new Intent(Intent.ACTION_SEND);
-        it.putExtra(Intent.EXTRA_TEXT, "您的朋友通过易行与您分享一条路线，URL "
+        it.putExtra(Intent.EXTRA_TEXT, "您的朋友通过驾驶宝与您分享一条路线，URL "
                 + " 链接：" + shareUrlResult.getUrl());
         it.setType("text/plain");
         Intent intent = Intent.createChooser(it, "将路线分享到");

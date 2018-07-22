@@ -2,10 +2,13 @@ package com.qin.fragment;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -21,14 +24,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.axin.coffee.ball_library.PopupService;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -80,8 +86,8 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 
+import static android.content.Context.BIND_AUTO_CREATE;
 import static com.lzy.okgo.model.Progress.TAG;
-
 
 
 public class MainFragment extends Fragment {
@@ -182,6 +188,10 @@ public class MainFragment extends Fragment {
     LinearLayout physicalReport;
     @BindView(R.id.drink_drive)
     LinearLayout drinkDrive;
+
+    //悬浮球
+    @BindView(R.id.id_open_floating)
+    Switch idOpenFloating;
 //    @BindView(R.id.banner)
 //    Banner banner;
 //    @BindView(R.id.tv_main_carcotrolmore)
@@ -204,7 +214,7 @@ public class MainFragment extends Fragment {
     private ArrayList<String> titleList = new ArrayList<String>();
     private static final String URL_HEAD = "http://apis.haoservice.com/weather/geo?lon=";
     private static final String URL_MID = "&lat=";
-    private static final String URL_END = "8&key=a5f0c24240604416869a05667fdda0e7";
+    private static final String URL_END = "8&key=29ed96e38ca64f6abf0f0d82531d4eee";
     private String mUrl;
     private static final String TODAY_GAS_PRICE = "http://api.jisuapi.com/oil/query?appkey=0904a03845733063&province=";
     private static final String BREAKRULE_LAT = "http://api.jisuapi.com/illegaladdr/coord?lat=";
@@ -235,6 +245,13 @@ public class MainFragment extends Fragment {
     private String mUserid;
     private String mSpUser_id;
     private Dialog mLoginDialog;
+
+
+
+    //悬浮球
+    PopupService mPopupService;
+    private ServiceConnection mServiceConnection;
+    private Intent mServiceIntent;
 
     /**
      * 生成mainfragment实例并传值
@@ -278,6 +295,19 @@ public class MainFragment extends Fragment {
         tvMainMeasure.setSelected(true);
         mDialog.show();
         startLocation();
+
+        //悬浮球
+        idOpenFloating.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                onMyCheckedChanged(isChecked);
+            }
+        });
+        myBindService();
+
+
+
+
         return mView;
     }
 
@@ -461,7 +491,7 @@ public class MainFragment extends Fragment {
                         JSONObject jsonObject = new JSONObject(response.body());
                         String error_code = jsonObject.getString("error_code");
                         if (error_code.equals("0")) {
-                            parseData(response.body());
+                            //parseData(response.body());
                         } else {
                             ToastUtils.showBgResource(mActivity, jsonObject.getString("第三方数据异常"));
                         }
@@ -540,115 +570,6 @@ public class MainFragment extends Fragment {
 //            }
 //        });
 //    }
-
-    /**
-     * 获取汽车新闻数据
-     *
-     * @param body
-     */
-//    private void parseDataTrafficNews(String body) {
-//        Gson gson = new Gson();
-//        CarControl carControl = gson.fromJson(body, CarControl.class);
-//        com.qin.pojo.carcontrol.Result result = carControl.getResult();
-//        mTrafficResultList = (ArrayList<Lists>) result.getList();
-//        //TODO 使用piscio加载图片+viewpager
-//        imagesTraffic.add(mTrafficResultList.get(0).getPic());
-//        imagesTraffic.add(mTrafficResultList.get(1).getPic());
-//        imagesTraffic.add(mTrafficResultList.get(2).getPic());
-//        imagesTraffic.add(mTrafficResultList.get(3).getPic());
-//        imagesTraffic.add(mTrafficResultList.get(4).getPic());
-//        titlesTraffic.add(mTrafficResultList.get(0).getTitle());
-//        titlesTraffic.add(mTrafficResultList.get(1).getTitle());
-//        titlesTraffic.add(mTrafficResultList.get(2).getTitle());
-//        titlesTraffic.add(mTrafficResultList.get(3).getTitle());
-//        titlesTraffic.add(mTrafficResultList.get(4).getTitle());
-////        initBannerTraffic();
-//    }
-
-    /**
-     * 解析json汽车新闻数据
-     *
-     * @param body
-     */
-//    private void parseDataCarControl(String body) {
-//        Gson gson = new Gson();
-//        CarControl carControl = gson.fromJson(body, CarControl.class);
-//        com.qin.pojo.carcontrol.Result result = carControl.getResult();
-//        mCarResultList = (ArrayList<Lists>) result.getList();
-//        //TODO 使用piscio加载图片+viewpager
-//        images.add(mCarResultList.get(0).getPic());
-//        images.add(mCarResultList.get(1).getPic());
-//        images.add(mCarResultList.get(2).getPic());
-//        images.add(mCarResultList.get(3).getPic());
-//        images.add(mCarResultList.get(4).getPic());
-//        titles.add(mCarResultList.get(0).getTitle());
-//        titles.add(mCarResultList.get(1).getTitle());
-//        titles.add(mCarResultList.get(2).getTitle());
-//        titles.add(mCarResultList.get(3).getTitle());
-//        titles.add(mCarResultList.get(4).getTitle());
-////        initBanner();
-//    }
-
-    /**
-     * 初始化交通轮播控件
-     */
-//    private void initBannerTraffic() {
-//        bannerTraffic.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
-//        bannerTraffic.setImageLoader(new GlideImageLoader());
-//        bannerTraffic.setImages(imagesTraffic);
-//        bannerTraffic.setBannerAnimation(Transformer.Accordion);
-//        bannerTraffic.setBannerTitles(titlesTraffic);
-//        bannerTraffic.isAutoPlay(true);
-//        bannerTraffic.setDelayTime(3000);
-//        bannerTraffic.setIndicatorGravity(BannerConfig.CENTER);
-//        bannerTraffic.start();
-//        bannerTraffic.setOnBannerListener(new OnBannerListener() {
-//            @Override
-//            public void OnBannerClick(int position) {
-//                Intent intent = new Intent();
-//                intent.putExtra("URL", mTrafficResultList.get(position).getUrl());
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setClass(mActivity, CarControlWebActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        if (mDialog.isShowing()) {
-//            mDialog.dismiss();
-//        }
-//        refreshLayout.finishRefresh();
-//    }
-
-    /**
-     * 初始化汽车控轮播控件
-     */
-//    private void initBanner() {
-//        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
-//        banner.setImageLoader(new GlideImageLoader());
-//        banner.setImages(images);
-//        banner.setBannerAnimation(Transformer.Accordion);
-//        banner.setBannerTitles(titles);
-//        banner.isAutoPlay(true);
-//        banner.setDelayTime(3000);
-//        banner.setIndicatorGravity(BannerConfig.CENTER);
-//        banner.start();
-//        banner.setOnBannerListener(new OnBannerListener() {
-//            @Override
-//            public void OnBannerClick(int position) {
-//                Intent intent = new Intent();
-//                intent.putExtra("URL", mCarResultList.get(position).getUrl());
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.setClass(mActivity, CarControlWebActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        if (mDialog.isShowing()) {
-//            mDialog.dismiss();
-//        }
-//    }
-
-    /**
-     * 设置洗车指数，紫外线控件
-     */
     private void initText() {
         toolbarAdvice.setTextList(titleList);
         toolbarAdvice.setText(14, 10, R.color.colorWrite);//设置属性
@@ -726,7 +647,7 @@ public class MainFragment extends Fragment {
     @OnClick({R.id.ll_main_breakrule, R.id.ll_location, R.id.ll_main_gas_station, R.id.ll_main_parking, R.id.ll_main_repair_shop, R.id.floating_action_button
             , R.id.ll_main_repair_wash, R.id.ll_main_service, R.id.ll_main_vehicleoffice, R.id.ll_main_toilet, R.id.ll_main_maintain, R.id.ll_main_breakrule_check
             , R.id.ll_main_breakrule_happen, R.id.ll_main_limitd, R.id.ll_main_headingcode, R.id.ll_main_cartype, R.id.ll_main_medicine_knowledge
-            , R.id.ll_main_platechck, R.id.ll_main_breakdown, R.id.ll_main_carinsurance,R.id.physical_exam,R.id.physical_report,R.id.drink_drive})
+            , R.id.ll_main_platechck, R.id.ll_main_breakdown, R.id.ll_main_carinsurance, R.id.physical_exam, R.id.physical_report, R.id.drink_drive})
     public void onViewClicked(View view) {
         Intent intent = new Intent();
         mCity = SPUtils.getInstance(mActivity).getString(ConstantValues.MAIN_LOCATION_CITY, "获取失败");
@@ -753,6 +674,7 @@ public class MainFragment extends Fragment {
                 } else {
                     GasStationActivity.startActivityWithParams(mActivity, intent, 1, mLat, mLon);
                 }
+                // ToastUtils.showBgResource(getContext(), "暂未开放");
                 break;
             /**
              * 附近停车场
@@ -795,13 +717,14 @@ public class MainFragment extends Fragment {
             /**
              * 附近洗车
              */
-//            case R.id.ll_main_repair_wash:
+            case R.id.ll_main_repair_wash:
 //                if (mLatitude != 0 && mLongitude != 0) {
-//                    WashCarActivity.startActivityWithParams(mActivity, intent, 1, mLatitude, mLongitude);
-//                } else {
-//                    WashCarActivity.startActivityWithParams(mActivity, intent, 1, mLat, mLon);
-//                }
-//                break;
+////                    WashCarActivity.startActivityWithParams(mActivity, intent, 1, mLatitude, mLongitude);
+////                } else {
+////                    WashCarActivity.startActivityWithParams(mActivity, intent, 1, mLat, mLon);
+////                }
+                ToastUtils.showBgResource(getContext(), "暂未开放");
+                break;
             /**
              * 附近服务区
              */
@@ -908,26 +831,6 @@ public class MainFragment extends Fragment {
                     startActivity(intent);
                 }
                 break;
-            /**
-             * 汽车资讯查看更多
-             */
-//            case R.id.tv_main_carcotrolmore:
-//                intent.putParcelableArrayListExtra("CARCONTROL", mCarResultList);
-//                intent.putExtra("title", "汽车资讯");
-//                intent.setClass(mActivity, CarControlMoreActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                break;
-            /**
-             * 交通资讯查看更多
-             */
-//            case R.id.tv_main_trafficmore:
-//                intent.putParcelableArrayListExtra("CARCONTROL", mTrafficResultList);
-//                intent.putExtra("title", "交通快讯");
-//                intent.setClass(mActivity, CarControlMoreActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                break;
             case R.id.ll_main_medicine_knowledge:
                 intent.setClass(mActivity, MedicineKonwledge.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -1195,5 +1098,44 @@ public class MainFragment extends Fragment {
             }
         }
     };
+
+
+
+    //悬浮球
+    public void onMyCheckedChanged(boolean isChecked) {
+        if(isChecked) {
+            mPopupService.show();
+        } else {
+            mPopupService.dimiss();
+        }
+    }
+
+    private void myBindService() {
+
+        mServiceIntent = new Intent(getContext(), PopupService.class);
+
+        if(mServiceConnection == null) {
+            mServiceConnection = new ServiceConnection() {
+                @Override
+                public void onServiceConnected(ComponentName name, IBinder service) {
+                    mPopupService = ((PopupService.PopupBinder) service).getService();
+                }
+
+                @Override
+                public void onServiceDisconnected(ComponentName name) {
+
+                }
+            };
+            mActivity.bindService(mServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+
+        }
+    }
+
+    private void myUnBindService() {
+        if(null != mServiceConnection) {
+            mActivity.unbindService(mServiceConnection);
+            mServiceConnection = null;
+        }
+    }
 
 }

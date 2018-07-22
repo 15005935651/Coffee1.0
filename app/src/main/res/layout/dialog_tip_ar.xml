@@ -86,7 +86,6 @@
             app:layout_constraintStart_toEndOf="@+id/line1"
             app:layout_constraintTop_toTopOf="@+id/line" />
         <View
-            android:id="@+id/line2"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:background="@color/T_F2"

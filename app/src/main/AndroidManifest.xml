@@ -54,7 +54,8 @@
             android:enabled="true"
             android:process=":remote" />
 
-
+        <service android:name="com.axin.coffee.ball_library.PopupService">
+        </service>
 
         <!--百度语音key和服务-->
         <meta-data android:name="com.baidu.speech.APP_ID"

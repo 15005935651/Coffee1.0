@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/rl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -33,7 +32,6 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl2"
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
         android:layout_height="wrap_content">
